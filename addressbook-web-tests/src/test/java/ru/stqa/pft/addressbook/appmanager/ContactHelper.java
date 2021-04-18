@@ -4,41 +4,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper {
-    private WebDriver wb;
+public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wb) {
 
-        this.wb = wb;
+        super(wb);
     }
 
     public void returnToHome() {
-        wb.findElement(By.linkText("home")).click();
+        click(By.linkText("home"));
     }
 
     public void submitContactCreation() {
-        wb.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillContactForm(ContactData contactData) {
-        wb.findElement(By.name("firstname")).clear();
-        wb.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        wb.findElement(By.name("lastname")).clear();
-        wb.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        wb.findElement(By.name("nickname")).clear();
-        wb.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
-        wb.findElement(By.name("company")).clear();
-        wb.findElement(By.name("company")).sendKeys(contactData.getCompany());
-        wb.findElement(By.name("address")).clear();
-        wb.findElement(By.name("address")).sendKeys(contactData.getAddress());
-        wb.findElement(By.name("mobile")).clear();
-        wb.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
-        wb.findElement(By.name("email")).clear();
-        wb.findElement(By.name("email")).sendKeys(contactData.getEmail());
+        type(By.name("firstname"),contactData.getFirstname());
+        type(By.name("lastname"),contactData.getLastname());
+        type(By.name("nickname"),contactData.getNickname());
+        type(By.name("company"),contactData.getCompany());
+        type(By.name("address"),contactData.getAddress());
+        type(By.name("mobile"),contactData.getMobile());
+        type(By.name("email"),contactData.getEmail());
     }
 
     public void initContactCreation() {
-        wb.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
 
     public void popupHandling() {
@@ -46,6 +38,6 @@ public class ContactHelper {
     }
 
     public void deleteSelectedContact() {
-        wb.findElement(By.xpath("//input[@value='Delete']")).click();
+        click(By.xpath("//input[@value='Delete']"));
     }
 }
