@@ -26,11 +26,11 @@ public class ApplicationManager {
 
 
     public void init() {
-        if (browser == BrowserType.FIREFOX) {
+        if (browser.equals(BrowserType.FIREFOX)) {
             wb = new FirefoxDriver();
-        } else if (browser == BrowserType.CHROME) {
+        } else if (browser.equals(BrowserType.CHROME)) {
             wb = new ChromeDriver();
-        } else if (browser == BrowserType.IE) {
+        } else if (browser.equals(BrowserType.IE)) {
             wb = new InternetExplorerDriver();
         }
 
