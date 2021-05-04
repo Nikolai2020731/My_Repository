@@ -33,8 +33,9 @@ public class GroupHelper extends HelperBase {
     }
 
     //Используется как для групп, так и для контактов
-    public void selectGroup() {
-        click(By.name("selected[]"));
+    public void selectGroup(int index) {
+        wb.findElements(By.name("selected[]")).get(index).click();
+
     }
 
     public void initGroupModification() {

@@ -11,7 +11,7 @@ public class ContactModificationTests extends TestBase {
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Nikolay", "Ruslyakov", "kolya", "Alfa-bank", "Ekaterinburg", "89123065091", "kolya.ruslyakov@mail.ru", "test1"), true);
         }
-        app.getGroupHelper().selectGroup();
+        app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("NIKOLAY", "RUSLYAKOV", "KOLYA", "Alfa-bank", "Ekaterinburg", "89123065091", "kolya.ruslyakov@mail.ru", null), false);
         app.getContactHelper().submitContactModification();

@@ -45,6 +45,11 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
+    public void selectContact() {
+        wb.findElement(By.name("selected[]")).click();
+
+    }
+
     public void popupHandling() {
         wb.switchTo().alert().accept();
     }
