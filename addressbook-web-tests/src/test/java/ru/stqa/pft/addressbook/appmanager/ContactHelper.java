@@ -77,4 +77,9 @@ public class ContactHelper extends HelperBase {
 
         return isElementPresent(By.name("selected[]"));
     }
+
+    public int getContactCount() {
+        return wb.findElements(By.name("selected[]")).size();
+
+    }
 }
