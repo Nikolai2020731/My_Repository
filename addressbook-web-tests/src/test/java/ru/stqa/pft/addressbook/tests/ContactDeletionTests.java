@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(enabled = false)
     public void ensurePrediction() {
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Nikolay", "Ruslyakov", "kolya", "Alfa-bank", "Ekaterinburg", "89123065091", "kolya.ruslyakov@mail.ru", "test1"), true);
