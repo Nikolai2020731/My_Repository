@@ -12,7 +12,8 @@ public class ContactDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePrediction() {
         if (app.contact().list().size() == 0) {
-            app.contact().create(new ContactData("Nikolay", "Ruslyakov", "kolya", "Alfa-bank", "Ekaterinburg", "89123065091", "kolya.ruslyakov@mail.ru", "test1"), true);
+            app.contact().create(new ContactData().withFirstname("Nikolay").withLastname("Ruslyakov").withNickname("kolya").withCompany("Alfa-bank")
+                    .withAddress("Ekaterinburg").withMobile("89123065091").withEmail("kolya.ruslyakov@mail.ru").withGroup("test1"), true);
         }
     }
 
