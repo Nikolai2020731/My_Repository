@@ -46,6 +46,14 @@ public class ContactHelper extends HelperBase {
 
     }
 
+    public void modify(int index, ContactData contact) {
+        selectContact(index);
+        initContactModification(index);
+        fillContactForm(contact, false);
+        submitContactModification();
+        returnToHome();
+    }
+
     public void initContactCreation() {
         click(By.linkText("add new"));
     }
@@ -70,10 +78,17 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
 
-    public void createContact(ContactData contact, boolean b) {
+    public void create(ContactData contact, boolean b) {
         initContactCreation();
         fillContactForm(contact, b);
         submitContactCreation();
+        returnToHome();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        deleteSelectedContact();
+        popupHandling();
         returnToHome();
     }
 
@@ -87,7 +102,7 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wb.findElements(By.cssSelector("tr[name=\"entry\"]"));
         for (WebElement element:elements) {
