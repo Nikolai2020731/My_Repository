@@ -81,7 +81,7 @@ public class ContactHelper extends HelperBase {
         String home = wb.findElement(By.name("home")).getAttribute("value");
         String mobile = wb.findElement(By.name("mobile")).getAttribute("value");
         String work = wb.findElement(By.name("work")).getAttribute("value");
-
+        returnToHome();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobile(mobile).withWorkPhone(work);
     }
 
