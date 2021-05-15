@@ -8,9 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -74,6 +72,17 @@ public class ContactHelper extends HelperBase {
 
     public void initContactModification(int index) {
         wb.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+    }
+
+    public ContactData infoFromEditForm (ContactData contact) {
+        initContactModificationById(contact.getId());
+        String firstname = wb.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wb.findElement(By.name("lastname")).getAttribute("value");
+        String home = wb.findElement(By.name("home")).getAttribute("value");
+        String mobile = wb.findElement(By.name("mobile")).getAttribute("value");
+        String work = wb.findElement(By.name("work")).getAttribute("value");
+
+        return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobile(mobile).withWorkPhone(work);
     }
 
     public void initContactModificationById(int id) {
