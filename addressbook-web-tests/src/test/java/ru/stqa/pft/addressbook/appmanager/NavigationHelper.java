@@ -20,5 +20,12 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
+    public void addNewContactPage() {
+        if (isElementPresent(By.id("content"))
+                && isElementPresent(By.name("theform"))) {
+            return;
+        }
+        click(By.linkText("add new"));
+    }
 
 }
