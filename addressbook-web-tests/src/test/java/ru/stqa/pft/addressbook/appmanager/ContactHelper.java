@@ -25,7 +25,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactCreation() {
-        click(By.name("submit"));
+        click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
@@ -36,6 +36,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"),contactData.getAddress());
         type(By.name("mobile"),contactData.getMobilePhone());
         type(By.name("email"),contactData.getEmail());
+        attach(By.name("photo"),contactData.getPhoto());
 
         if (creation) {
             new Select(wb.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
