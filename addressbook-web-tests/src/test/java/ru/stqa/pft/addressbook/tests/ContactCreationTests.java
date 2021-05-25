@@ -1,19 +1,38 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.io.File;
-import java.util.concurrent.TimeUnit;
-
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
+
+    @DataProvider
+    public Iterator<Object[]> validContacts() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
+        String xml = "";
+        String line = reader.readLine();
+        while (line != null) {
+            xml += line;
+            line = reader.readLine();
+        }
+        XStream xstream = new XStream();
+        xstream.processAnnotations(ContactData.class);
+        List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
+        return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
+    }
 
     @BeforeMethod
     public void ensurePreconditionsForCreationTests() {
@@ -24,11 +43,11 @@ public class ContactCreationTests extends TestBase {
         app.contact().returnToHome();
     }
 
-    @Test
+    @Test (dataProvider = "validContacts")
     public void testContactCreation() throws Exception {
         Contacts before = app.contact().all();
-        File photo = new File("src/test/resources/photo1.png");
-        ContactData contact = new ContactData().withFirstname("Nikolay").withLastname("Ruslyakov").withNickname("kolya").withPhoto(photo).withCompany("Alfa-bank")
+        //File photo = new File("src/test/resources/photo1.png");
+        ContactData contact = new ContactData().withFirstname("Nikolay").withLastname("Ruslyakov").withNickname("kolya").withCompany("Alfa-bank")
                 .withAddress("Ekaterinburg").withMobilePhone("89123065091").withEmail("kolya.ruslyakov@mail.ru").withGroup("test1");
         app.contact().create(contact, true);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
