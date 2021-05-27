@@ -59,22 +59,24 @@ public class ContactDataGenerator {
     }
 
     private void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n",contact.getFirstname(),
-                    contact.getLastname(), contact.getNickname(), contact.getCompany(), contact.getAddress(),contact.getMobilePhone(),
-                    contact.getEmail(),contact.getGroup()));
+        try(Writer writer = new FileWriter(file)) {
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n",contact.getFirstname(),
+                        contact.getLastname(), contact.getNickname(), contact.getCompany(), contact.getAddress(),contact.getMobilePhone(),
+                        contact.getEmail(),contact.getGroup()));
+            }
         }
-        writer.close();
+
     }
 
     private void saveAsXML(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         String xml = xstream.toXML(contacts);
-        Writer writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try (Writer writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
+
     }
 
 }

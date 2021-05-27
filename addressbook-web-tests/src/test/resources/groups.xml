@@ -1,29 +1,30 @@
 <list>
-  <ru.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
-    <firstname>Ivan</firstname>
-    <lastname>Ivanov</lastname>
-    <address>г. Москва, ул. Тверская, д. 5</address>
-    <mobilePhone>89094567898</mobilePhone>
-    <email>ivanovivan@yandex.ru</email>
-    <group>test 1</group>
-  </ru.stqa.pft.addressbook.model.ContactData>
-  <ru.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
-    <firstname>Ivan</firstname>
-    <lastname>Ivanov</lastname>
-    <address>г. Москва, ул. Тверская, д. 5</address>
-    <mobilePhone>89094567898</mobilePhone>
-    <email>ivanovivan@yandex.ru</email>
-    <group>test 1</group>
-  </ru.stqa.pft.addressbook.model.ContactData>
-  <ru.stqa.pft.addressbook.model.ContactData>
-    <id>2147483647</id>
-    <firstname>Ivan</firstname>
-    <lastname>Ivanov</lastname>
-    <address>г. Москва, ул. Тверская, д. 5</address>
-    <mobilePhone>89094567898</mobilePhone>
-    <email>ivanovivan@yandex.ru</email>
-    <group>test 1</group>
-  </ru.stqa.pft.addressbook.model.ContactData>
+  <group>
+    <name>test 0</name>
+    <header>header 
+0</header>
+    <footer>footer 
+0</footer>
+  </group>
+  <group>
+    <name>test 1</name>
+    <header>header 
+1</header>
+    <footer>footer 
+1</footer>
+  </group>
+  <group>
+    <name>test 2</name>
+    <header>header 
+2</header>
+    <footer>footer 
+2</footer>
+  </group>
+  <group>
+    <name>test 3</name>
+    <header>header 
+3</header>
+    <footer>footer 
+3</footer>
+  </group>
 </list>

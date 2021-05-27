@@ -29,4 +29,14 @@
     <email>kolya.ruslyakov@mail.ru</email>
     <group>test1</group>
   </group>
+  <group>
+    <firstname>Nikolay</firstname>
+    <lastname>Ruslyakov</lastname>
+    <nickname>kolya</nickname>
+    <company>Alfa-bank</company>
+    <address>Ekaterinburg</address>
+    <mobilePhone>89123065091</mobilePhone>
+    <email>kolya.ruslyakov@mail.ru</email>
+    <group>test1</group>
+  </group>
 </list>
