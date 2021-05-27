@@ -44,11 +44,9 @@ public class ContactCreationTests extends TestBase {
     }
 
     @Test (dataProvider = "validContacts")
-    public void testContactCreation() throws Exception {
+    public void testContactCreation(ContactData contact) throws Exception {
         Contacts before = app.contact().all();
         //File photo = new File("src/test/resources/photo1.png");
-        ContactData contact = new ContactData().withFirstname("Nikolay").withLastname("Ruslyakov").withNickname("kolya").withCompany("Alfa-bank")
-                .withAddress("Ekaterinburg").withMobilePhone("89123065091").withEmail("kolya.ruslyakov@mail.ru").withGroup("test1");
         app.contact().create(contact, true);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
