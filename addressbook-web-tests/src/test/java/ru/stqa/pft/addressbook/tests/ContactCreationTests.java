@@ -10,6 +10,8 @@ import java.util.List;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -48,6 +50,7 @@ public class ContactCreationTests extends TestBase {
     @Test (dataProvider = "validContacts")
     public void testContactCreation(ContactData contact) throws Exception {
         Contacts before = app.db().contacts();
+        Groups groups = app.db().groups();
         //File photo = new File("src/test/resources/photo1.png");
         app.contact().create(contact, true);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
