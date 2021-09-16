@@ -41,8 +41,8 @@
         <!-- Names the annotated entity class -->
 
 
-        <mapping class="ru.stqa.pft.addressbook.model.GroupData"/>
-        <mapping class="ru.stqa.pft.addressbook.model.ContactData"/>
+        <mapping class="ru.stqa.pft.mantis.model.GroupData"/>
+        <mapping class="ru.stqa.pft.mantis.model.ContactData"/>
 
     </session-factory>
 
